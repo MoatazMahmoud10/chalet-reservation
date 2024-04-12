@@ -10,31 +10,28 @@ class CategroyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/history');
+          },
+          icon: Icon(Icons.history),
+        ),
         centerTitle: true,
-        title:const Text("City",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 30
-        ),),
+        title: const Text(
+          "City",
+          style: TextStyle(color: Colors.white, fontSize: 30),
+        ),
       ),
-      
-      body:GridView(
-      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisExtent:200,
-        crossAxisCount:2,
-        mainAxisSpacing:10,
-        crossAxisSpacing: 10
-        ),
-      children: Categories_data.map(
-        (categoryData) => CategoryItem(
-          categoryData.id,
-          categoryData.title,
-          categoryData.image,
-          
-        ),
-      ).toList(),
-    ),
-
+      body: GridView(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(mainAxisExtent: 200, crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
+        children: Categories_data.map(
+          (categoryData) => CategoryItem(
+            categoryData.id,
+            categoryData.title,
+            categoryData.image,
+          ),
+        ).toList(),
+      ),
     );
   }
 }
